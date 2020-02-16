@@ -5,10 +5,9 @@ class Song
   attr_accessor :name, :album
   attr_reader :id
  
-  def initialize(id=nil, name, album)
-    @id = id
-    @name = name
-    @album = album
+  def initialize(options={})
+  options.each do |property, value|
+    self.send("#{property}=", value)
   end
  
   def self.create_table
